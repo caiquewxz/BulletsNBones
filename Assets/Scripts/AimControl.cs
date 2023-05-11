@@ -7,7 +7,6 @@ public class AimControl : MonoBehaviour
     Vector2 mousePos = new Vector2();
     public GameObject template;
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 origin = Camera.main.transform.position;
@@ -25,18 +24,18 @@ public class AimControl : MonoBehaviour
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lookRotation.y, transform.rotation.eulerAngles.z);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        //projectile launch and creation
+        /*if (Input.GetButtonDown("Fire1"))
         {
             Instantiate(template, transform.position, transform.rotation);
-        }
+            
+        }*/
     }
 
     void OnGUI()
     {
         Event currentEvent = Event.current;
 
-        // Get the mouse position from Event.
-        // Note that the y position from Event is inverted.
         mousePos.x = currentEvent.mousePosition.x;
         mousePos.y = Camera.main.pixelHeight - currentEvent.mousePosition.y;
 

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    void Start()
-    {
+    public int bulletDamage = 10;
 
-    }
-
-    void Update()
+    private void OnTriggerEnter(Collider bullet)
     {
-        
+        if (bullet.gameObject.CompareTag("Enemy"))
+        {
+            bullet.gameObject.GetComponent<HpComponent>().TakeDamage(bulletDamage);
+            Debug.Log(bullet.gameObject.GetComponent<HpComponent>().currentHP);
+            Destroy(this.gameObject);
+        }
     }
 }
