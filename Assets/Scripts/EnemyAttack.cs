@@ -21,7 +21,7 @@ public class EnemyAttack : MonoBehaviour
         if (attackTimer >= attackCooldown && player != null)
         {
             player.GetComponent<HpComponent>().TakeDamage(attackDamage);
-            Debug.Log(player.GetComponent<HpComponent>().currentHP);
+            Debug.Log("Atual player HP: " + player.GetComponent<HpComponent>().currentHP);
             attackTimer = 0f;
         }
     }

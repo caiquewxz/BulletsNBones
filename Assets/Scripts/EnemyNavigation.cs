@@ -10,6 +10,8 @@ public class EnemyNavigation : MonoBehaviour
 
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("PlayerModel").transform;
+
         agent = GetComponent<NavMeshAgent>();
     }
 
