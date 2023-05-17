@@ -5,7 +5,18 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public int bulletDamage = 10;
-    private GameObject projectile;
+    public float timeToDestroyProjectile;
+    public GameObject projectile;
+    public GameObject character;
+    public float launchForce;
+
+    public void CreateBullet()
+    {
+        GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+        Vector3 direction = character.transform.forward;
+        newProjectile.GetComponent<Rigidbody>().AddForce(direction * launchForce, ForceMode.Impulse);
+        Destroy(newProjectile, timeToDestroyProjectile);
+    }
 
     private void OnTriggerEnter(Collider bullet)
     {

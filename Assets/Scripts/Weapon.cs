@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Weapon : MonoBehaviour
+public class Weapon : Projectile
 {
-    public GameObject projectile;
-    public GameObject character;
-    public float launchForce;
-    public float timeToDestroyProjectile;
     public float rateOfFire;
     public float reloadCooldown;
+    public bool canChangeFireMode;
     public int maxAmmoInMag;
     public int currentAmmoInMag;
     public int reserveAmmoInMag;
     public Text ammoText;
     public Text fireModeText;
+    public AudioSource reloadSound;
+    public AudioSource fireSound;
     private int ammoToReload;
     private bool isReloading;
     private float automaticFireTimer;
@@ -27,6 +26,7 @@ public class Weapon : MonoBehaviour
     {
         ChangeFireMode();
         SetCurrentAmmo(maxAmmoInMag);
+        canAutoShoot = true;
         automaticFireTimer = rateOfFire;
     }
 
@@ -36,7 +36,6 @@ public class Weapon : MonoBehaviour
         if ((Input.GetButtonDown("Fire1") && currentAmmoInMag > 0) && (!isReloading && !automaticFireMode))
         {
             Fire();
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Play();
         }
 
         //full auto fire 
@@ -49,7 +48,6 @@ public class Weapon : MonoBehaviour
                 StartCoroutine(AutomaticFire());
                 automaticFireTimer = 0f;
                 canAutoShoot = false;
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<AudioSource>().Play();
             }
         }
 
@@ -80,7 +78,7 @@ public class Weapon : MonoBehaviour
 
             if (weapon != null)
             {
-                weapon.GetComponent<AudioSource>().Play();
+                reloadSound.Play();
             }
 
             yield return new WaitForSeconds(reloadCooldown);
@@ -108,21 +106,18 @@ public class Weapon : MonoBehaviour
     private void Fire()
     {
         SetCurrentAmmo(currentAmmoInMag - 1);
-        GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-        Vector3 direction = character.transform.forward;
-        newProjectile.GetComponent<Rigidbody>().AddForce(direction * launchForce, ForceMode.Impulse);
-        Destroy(newProjectile, timeToDestroyProjectile);
+        //passar logica de add force e timeToDie para projetil
+        CreateBullet();
+        fireSound.Play();
         Debug.Log("atual ammo in mag: " + currentAmmoInMag);
     }
 
     IEnumerator AutomaticFire()
     {
-        canAutoShoot = true;
         SetCurrentAmmo(currentAmmoInMag - 1);
-        GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-        Vector3 direction = character.transform.forward;
-        newProjectile.GetComponent<Rigidbody>().AddForce(direction * launchForce, ForceMode.Impulse);
-        Destroy(newProjectile, timeToDestroyProjectile);
+        //passar logica de add force e timeToDie para projetil
+        CreateBullet();
+        fireSound.Play();
         Debug.Log("atual ammo in mag: " + currentAmmoInMag);
         yield return new WaitForSeconds(rateOfFire);
         canAutoShoot = true;
@@ -153,16 +148,9 @@ public class Weapon : MonoBehaviour
 
     private void ChangeFireMode()
     {
-        if (automaticFireMode)
+        if (canChangeFireMode)
         {
-            automaticFireMode = false;
-            Debug.Log("Fire mode set to single fire!");
-            UpdateFireModeText();
-        }
-        else
-        {
-            automaticFireMode = true;
-            Debug.Log("Fire mode set to full auto!");
+            automaticFireMode = !automaticFireMode;
             UpdateFireModeText();
         }
     }
