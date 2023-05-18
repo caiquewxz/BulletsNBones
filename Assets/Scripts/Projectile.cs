@@ -6,16 +6,14 @@ public class Projectile : MonoBehaviour
 {
     public int bulletDamage = 10;
     public float timeToDestroyProjectile;
-    public GameObject projectile;
-    public GameObject character;
     public float launchForce;
+    public AudioClip bulletSound;
 
-    public void CreateBullet()
+    private void Start()
     {
-        GameObject newProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-        Vector3 direction = character.transform.forward;
-        newProjectile.GetComponent<Rigidbody>().AddForce(direction * launchForce, ForceMode.Impulse);
-        Destroy(newProjectile, timeToDestroyProjectile);
+        gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * launchForce, ForceMode.Impulse);
+        Destroy(gameObject, timeToDestroyProjectile);
+        AudioSource.PlayClipAtPoint(bulletSound, transform.position);
     }
 
     private void OnTriggerEnter(Collider bullet)

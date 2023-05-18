@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 422159106124569959}
   - component: {fileID: 6599628026898835197}
   m_Layer: 0
-  m_Name: Prefab_ProjectileModel
+  m_Name: Prefab_m4Projectile
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,3 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletDamage: 10
+  timeToDestroyProjectile: 3
+  launchForce: 50
+  bulletSound: {fileID: 8300000, guid: 71383b0512018774a85e65a15dd84504, type: 3}

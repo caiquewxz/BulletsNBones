@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Weapon : Projectile
+public class Weapon : MonoBehaviour
 {
     public float rateOfFire;
     public float reloadCooldown;
@@ -11,16 +11,45 @@ public class Weapon : Projectile
     public int maxAmmoInMag;
     public int currentAmmoInMag;
     public int reserveAmmoInMag;
-    public Text ammoText;
-    public Text fireModeText;
     public AudioSource reloadSound;
-    public AudioSource fireSound;
+    public GameObject projectileTemplate;
+
+    public Text fireModeText
+    {
+        get
+        {
+            if(!_fireModeText)
+            {
+                _fireModeText = GameObject.FindGameObjectWithTag("FireModeText").GetComponent<Text>();
+            }
+
+            return _fireModeText;
+        }
+    }
+    public Text ammoText
+    {
+        get
+        {
+            if (!_ammoText)
+            {
+                _ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<Text>();
+            }
+
+            return _ammoText;
+        }
+    }
+
+
     private int ammoToReload;
     private bool isReloading;
     private float automaticFireTimer;
     private bool canAutoShoot;
     private bool automaticFireMode;
     private GameObject weapon;
+    private GameObject character; 
+    private Text _ammoText;
+    private Text _fireModeText;
+
 
     private void Start()
     {
@@ -28,6 +57,9 @@ public class Weapon : Projectile
         SetCurrentAmmo(maxAmmoInMag);
         canAutoShoot = true;
         automaticFireTimer = rateOfFire;
+        character = GameObject.FindGameObjectWithTag("PlayerModel");
+        _ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<Text>();
+        _fireModeText = GameObject.FindGameObjectWithTag("FireModeText").GetComponent<Text>();
     }
 
     void Update()
@@ -108,7 +140,6 @@ public class Weapon : Projectile
         SetCurrentAmmo(currentAmmoInMag - 1);
         //passar logica de add force e timeToDie para projetil
         CreateBullet();
-        fireSound.Play();
         Debug.Log("atual ammo in mag: " + currentAmmoInMag);
     }
 
@@ -117,7 +148,6 @@ public class Weapon : Projectile
         SetCurrentAmmo(currentAmmoInMag - 1);
         //passar logica de add force e timeToDie para projetil
         CreateBullet();
-        fireSound.Play();
         Debug.Log("atual ammo in mag: " + currentAmmoInMag);
         yield return new WaitForSeconds(rateOfFire);
         canAutoShoot = true;
@@ -153,5 +183,10 @@ public class Weapon : Projectile
             automaticFireMode = !automaticFireMode;
             UpdateFireModeText();
         }
+    }
+
+    private void CreateBullet()
+    {
+        Instantiate(projectileTemplate, transform.position, character.transform.rotation);
     }
 }

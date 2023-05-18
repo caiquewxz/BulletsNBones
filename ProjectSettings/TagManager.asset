@@ -8,6 +8,8 @@ TagManager:
   - Weapon
   - Bullet
   - PlayerModel
+  - AmmoText
+  - FireModeText
   layers:
   - Default
   - TransparentFX
