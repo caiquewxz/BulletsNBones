@@ -28,7 +28,6 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);
         if (other.CompareTag("Player") && attackTimer >= attackCooldown)
         {
             //salva player

@@ -984,6 +984,7 @@ GameObject:
   - component: {fileID: 8281587620777136967}
   - component: {fileID: 8281587620777136965}
   - component: {fileID: 8281587620777136964}
+  - component: {fileID: -6942272899733214459}
   m_Layer: 0
   m_Name: Prefab_SkeletonEnemy
   m_TagString: Enemy
@@ -1085,6 +1086,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldown: 2
   attackDamage: 10
+--- !u!114 &-6942272899733214459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9092615648579454521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f54e61879c34c41acff228acc1885e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  template: {fileID: 2637539172395325817, guid: 5b43d27185e4c5f47bad965ce3f34bab, type: 3}
+  dropChanceValue: 50
 --- !u!1 &9141671557478819389
 GameObject:
   m_ObjectHideFlags: 0
