@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemy;
-    public float spawnCooldown;
+    public float spawnInterval;
+    private int spawnedEnemies;
     private float timer;
     private Transform characterTransform;
 
@@ -18,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer >= spawnCooldown)
+        if (timer >= spawnInterval)
         {
             timer = 0f;
             GameObject clone = Instantiate(enemy, transform.position, transform.rotation);

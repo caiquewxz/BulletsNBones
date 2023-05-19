@@ -11,12 +11,13 @@ public class WeaponPickable : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && !!player)
         {
-            GameObject weapon = GameObject.FindGameObjectWithTag("Weapon");
+            GameObject[] weapons = GameObject.FindGameObjectsWithTag("Weapon");
 
-            if(weapon)
+            foreach(GameObject weapon in weapons)
             {
                 Destroy(weapon);
             }
+
 
             GameObject newPlayerWeapon = Instantiate(template, transform.position, transform.rotation);
             newPlayerWeapon.transform.parent = GameObject.FindGameObjectWithTag("PlayerModel").transform;

@@ -1050,6 +1050,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   currentHP: 0
+  isEnemy: 1
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!195 &8281587620777136965
 NavMeshAgent:
   m_ObjectHideFlags: 0

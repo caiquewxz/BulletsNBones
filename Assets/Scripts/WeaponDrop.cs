@@ -8,19 +8,17 @@ public class WeaponDrop : MonoBehaviour
 {
     public GameObject template;
     public float dropChanceValue;
+    private float dropChance;
 
     void OnDestroy()
     {
         dropChanceValue = dropChanceValue / 100;
-        int dropChance = (int)RandomRange(0f, 1f);
-        if (dropChance > dropChanceValue)
+        Debug.Log(dropChanceValue);
+        dropChance = UnityEngine.Random.Range(0f, 1f);
+        Debug.Log(dropChance);
+        if (dropChanceValue > dropChance)
         {
             GameObject newPlayerWeapon = Instantiate(template, transform.position, transform.rotation);
         }
-    }
-
-    private int RandomRange(float v1, float v2)
-    {
-        throw new NotImplementedException();
     }
 }

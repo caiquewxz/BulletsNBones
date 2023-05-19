@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4937026a3c414a54591a1db39aac72d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 10
+  bulletDamage: 25
   timeToDestroyProjectile: 3
   launchForce: 50
   bulletSound: {fileID: 8300000, guid: 71383b0512018774a85e65a15dd84504, type: 3}
