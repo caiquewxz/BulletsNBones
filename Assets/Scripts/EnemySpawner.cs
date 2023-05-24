@@ -10,6 +10,8 @@ public class EnemySpawner : MonoBehaviour
     private float timer;
     private Transform characterTransform;
 
+    public WaveSystem waveSystemReference;
+
     private void Start()
     {
         characterTransform = transform.Find("Prefab_SkeletonEnemy");
@@ -17,12 +19,24 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
+        StartCoroutine(SpawnEnemies());
+    }
 
-        if (timer >= spawnInterval)
+    IEnumerator SpawnEnemies()
+    {
+        if(waveSystemReference.enemiesToSpawn > 0)
         {
-            timer = 0f;
-            GameObject clone = Instantiate(enemy, transform.position, transform.rotation);
+            
+            yield return new WaitForSeconds(spawnInterval);
+
+            timer += Time.deltaTime;
+
+            if (timer >= spawnInterval)
+            {
+                timer = 0f;
+                GameObject clone = Instantiate(enemy, transform.position, transform.rotation);
+                waveSystemReference.enemiesToSpawn--;
+            }
         }
     }
 }

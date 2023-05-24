@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyCounter : MonoBehaviour
 {
-    void Update()
+    private int remainingEnemies;
+
+    private void OnDestroy()
     {
-        
+        remainingEnemies++;
     }
 }
