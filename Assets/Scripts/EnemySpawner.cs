@@ -22,20 +22,24 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemies());
     }
 
-    IEnumerator SpawnEnemies()
+    public IEnumerator SpawnEnemies()
     {
         if(waveSystemReference.enemiesToSpawn > 0)
         {
-            
-            yield return new WaitForSeconds(spawnInterval);
 
             timer += Time.deltaTime;
 
+            yield return new WaitForSeconds(spawnInterval);
+
             if (timer >= spawnInterval)
             {
-                timer = 0f;
                 GameObject clone = Instantiate(enemy, transform.position, transform.rotation);
-                waveSystemReference.enemiesToSpawn--;
+                
+                if(waveSystemReference.enemiesToSpawn > 0)
+                {
+                    waveSystemReference.enemiesToSpawn--;
+                }
+                timer = 0f;
             }
         }
     }

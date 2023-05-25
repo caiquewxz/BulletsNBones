@@ -130,5 +130,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 25
   timeToDestroyProjectile: 3
-  launchForce: 50
+  launchForce: 70
   bulletSound: {fileID: 8300000, guid: 71383b0512018774a85e65a15dd84504, type: 3}

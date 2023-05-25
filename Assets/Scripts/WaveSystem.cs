@@ -7,7 +7,6 @@ public class WaveSystem : MonoBehaviour
 {
     public int wave;
     public int kills;
-    public int remainingEnemiesAlive;
     public int waveEnemies;
     public int enemiesToSpawn;
     private static WaveSystem _instance;
@@ -32,11 +31,6 @@ public class WaveSystem : MonoBehaviour
     public void OnEnemyDie()
     {
         kills++;
-        remainingEnemiesAlive--;
-        if(kills > EnemiesThisWave())
-        {
-            StartWave();
-        }
         Debug.Log("enemy died!");
     }
 
@@ -53,19 +47,27 @@ public class WaveSystem : MonoBehaviour
 
     void Update()
     {
+        if (kills > EnemiesThisWave())
+        {
+            StartWave();
+        }
     }
 
-    private void StartWave()
+    public void StartWave()
     {
         wave++;
         enemiesToSpawn = EnemiesThisWave();
-
     }
 
     public int EnemiesThisWave()
     {
-        return waveEnemies * wave;
+        if(waveEnemies == 0)
+        {
+            return waveEnemies = 5;
+        }
+        else
+        {
+            return waveEnemies * wave;
+        }
     }
 }
-
-

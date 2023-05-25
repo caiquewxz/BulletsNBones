@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 9092615648579454521, guid: 3b468aa62e0fc3b4cae611c94daff6ef, type: 3}
-  spawnInterval: 2
+  spawnInterval: 1
   waveSystemReference: {fileID: 1828524362}
 --- !u!4 &1707373294
 Transform:
@@ -1182,9 +1182,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wave: 0
   kills: 0
-  remainingEnemiesAlive: 0
-  waveEnemies: 5
+  waveEnemies: 0
   enemiesToSpawn: 0
+  remainingEnemiesAlive: 0
+  waveInterval: 5
   onWaveCleared:
     m_PersistentCalls:
       m_Calls:
