@@ -5,7 +5,6 @@ using UnityEngine;
 public class AimControl : MonoBehaviour
 {
     Vector2 mousePos = new Vector2();
-    public GameObject template;
 
     void Update()
     {

@@ -31,6 +31,10 @@ public class WaveSystem : MonoBehaviour
     public void OnEnemyDie()
     {
         kills++;
+        if (kills >= EnemiesThisWave())
+        {
+            StartWave();
+        }
         Debug.Log("enemy died!");
     }
 
@@ -47,10 +51,7 @@ public class WaveSystem : MonoBehaviour
 
     void Update()
     {
-        if (kills > EnemiesThisWave())
-        {
-            StartWave();
-        }
+        
     }
 
     public void StartWave()
