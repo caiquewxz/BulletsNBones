@@ -13,6 +13,10 @@ public class Weapon : MonoBehaviour
     public int reserveAmmoInMag;
     public AudioSource reloadSound;
     public GameObject projectileTemplate;
+    public Vector3 attachLocationOffset;
+    public Vector3 attachRotationOffset;
+    public string playerHandTag = "HandPlayer";
+
 
     public Text fireModeText
     {
@@ -32,7 +36,7 @@ public class Weapon : MonoBehaviour
         {
             if (!_ammoText)
             {
-                _ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<Text>();
+                _ammoText = GameObject.FindGameObjectWithTag("AmmoText")?.GetComponent<Text>();
             }
 
             return _ammoText;
@@ -58,8 +62,8 @@ public class Weapon : MonoBehaviour
         canAutoShoot = true;
         automaticFireTimer = rateOfFire;
         character = GameObject.FindGameObjectWithTag("PlayerModel");
-        _ammoText = GameObject.FindGameObjectWithTag("AmmoText").GetComponent<Text>();
-        _fireModeText = GameObject.FindGameObjectWithTag("FireModeText").GetComponent<Text>();
+
+        AttachToPlayer();
     }
 
     void Update()
@@ -173,7 +177,10 @@ public class Weapon : MonoBehaviour
 
     private void UpdateAmmoText()
     {
-        ammoText.text = "Ammo: " + currentAmmoInMag + "/" + reserveAmmoInMag;
+        if (ammoText)
+        {
+            ammoText.text = "Ammo: " + currentAmmoInMag + "/" + reserveAmmoInMag;
+        }
     }
 
     private void ChangeFireMode()
@@ -188,5 +195,16 @@ public class Weapon : MonoBehaviour
     private void CreateBullet()
     {
         Instantiate(projectileTemplate, transform.position, character.transform.rotation);
+    }
+
+    private void AttachToPlayer()
+    {
+        GameObject attachTo = GameObject.FindGameObjectWithTag(playerHandTag);
+        if(attachTo != null)
+        {
+            transform.parent = attachTo.transform;
+            transform.localPosition = attachLocationOffset;
+            transform.localRotation = Quaternion.Euler(attachRotationOffset);
+        }
     }
 }

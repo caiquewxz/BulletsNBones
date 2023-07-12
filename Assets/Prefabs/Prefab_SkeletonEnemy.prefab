@@ -727,7 +727,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8190249956198889791}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.052096438}
+  m_LocalPosition: {x: 1.695, y: 0, z: 0.052096438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -985,6 +985,7 @@ GameObject:
   - component: {fileID: 8281587620777136965}
   - component: {fileID: 8281587620777136964}
   - component: {fileID: -6942272899733214459}
+  - component: {fileID: 6580367355458757376}
   m_Layer: 0
   m_Name: Prefab_SkeletonEnemy
   m_TagString: Enemy
@@ -1017,8 +1018,17 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9092615648579454521}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 0.6
   m_Height: 2
   m_Direction: 1
@@ -1089,7 +1099,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 2
-  attackDamage: 10
+  attackDamage1: 10
+  attackDamage2: 15
+  isAttacking: 0
+  animator: {fileID: 0}
+  delayAttackMin: 1
 --- !u!114 &-6942272899733214459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,6 +1118,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template: {fileID: 2637539172395325817, guid: 5b43d27185e4c5f47bad965ce3f34bab, type: 3}
   dropChanceValue: 50
+--- !u!95 &6580367355458757376
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9092615648579454521}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 55873acfc9660774bac4c2bcbd5b0b63, type: 3}
+  m_Controller: {fileID: 9100000, guid: b2d76098ec73a7446b09f6eb785f4708, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9141671557478819389
 GameObject:
   m_ObjectHideFlags: 0

@@ -35,8 +35,6 @@ public class TpsAnimController : MonoBehaviour
             forwardSpeed = Vector3.Dot(transform.forward, velocity) / maxSpeed;
             sideSpeed = Vector3.Dot(transform.right, velocity) / maxSpeed;
 
-            Debug.Log("Forward: " + forwardSpeed + " SideSpeed: " + sideSpeed);
-
             lastPosition = transform.position;
             yield return new WaitForSeconds(.1f);
         }

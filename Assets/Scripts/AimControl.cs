@@ -6,6 +6,8 @@ public class AimControl : MonoBehaviour
 {
     Vector2 mousePos = new Vector2();
 
+    [SerializeField] LayerMask mouseCollisionMask;
+
     void Update()
     {
         Vector3 origin = Camera.main.transform.position;
@@ -14,7 +16,7 @@ public class AimControl : MonoBehaviour
         Vector3 direction = Vector3.Normalize(screenPointWorldSpace -  origin);
 
         RaycastHit hit;
-        bool hittedGround = Physics.Raycast(origin, direction, out hit, 100f);
+        bool hittedGround = Physics.Raycast(origin, direction, out hit, 100f, mouseCollisionMask);
 
         if (hittedGround)
         {
@@ -23,6 +25,7 @@ public class AimControl : MonoBehaviour
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lookRotation.y, transform.rotation.eulerAngles.z);
         }
 
+        Debug.Log(mousePos);
         //projectile launch and creation
         /*if (Input.GetButtonDown("Fire1"))
         {
