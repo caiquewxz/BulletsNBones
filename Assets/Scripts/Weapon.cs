@@ -57,13 +57,13 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
+        AttachToPlayer();
         ChangeFireMode();
         SetCurrentAmmo(maxAmmoInMag);
         canAutoShoot = true;
         automaticFireTimer = rateOfFire;
         character = GameObject.FindGameObjectWithTag("PlayerModel");
 
-        AttachToPlayer();
     }
 
     void Update()

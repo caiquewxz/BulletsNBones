@@ -18,11 +18,16 @@ public class WeaponPickable : MonoBehaviour
                 Destroy(weapon);
             }
 
-
-            GameObject newPlayerWeapon = Instantiate(template, transform.position, transform.rotation);
-            //newPlayerWeapon.transform.parent = GameObject.FindGameObjectWithTag("PlayerModel").transform;
+            InstantiateNewWeapon();
+            
+            //newPlayerWeapon.transform.parent = GameObject.FindGameObjectWithTag("PlayerModel").transform;>
             Destroy(gameObject);
         }
+    }
+
+    private void InstantiateNewWeapon()
+    {
+        GameObject weaponInstance = Instantiate(template);
     }
 
     private void OnTriggerEnter(Collider collider)
