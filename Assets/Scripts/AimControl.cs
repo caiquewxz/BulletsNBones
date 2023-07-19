@@ -25,7 +25,6 @@ public class AimControl : MonoBehaviour
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, lookRotation.y, transform.rotation.eulerAngles.z);
         }
 
-        Debug.Log(mousePos);
         //projectile launch and creation
         /*if (Input.GetButtonDown("Fire1"))
         {

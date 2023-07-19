@@ -13,10 +13,15 @@ public class TpsAnimController : MonoBehaviour
     private float forwardSpeed;
     private float sideSpeed;
     private readonly float maxSpeed = .35f;
+    private bool playerIsDead;
     // Start is called before the first frame update
+
+    public HpComponent hpComponent;
+
     void Start()
     {
         StartCoroutine(CalcVelocity());
+
     }
 
     // Update is called once per frame
@@ -24,9 +29,11 @@ public class TpsAnimController : MonoBehaviour
     {
         animator.SetFloat("ForwardSpeed", forwardSpeed);
         animator.SetFloat("SideSpeed", sideSpeed);
+        //animator.SetBool("IsDead?", playerIsDead);
     }
+    
 
-
+    
     IEnumerator CalcVelocity()
     {
         while (true)
