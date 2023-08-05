@@ -9,8 +9,10 @@ public class HpComponent : MonoBehaviour
     public int maxHP;
     public int currentHP;
     public bool isEnemy;
+    public bool isPlayerDead;
     public GameObject particlePrefab;
     public GameObject player;
+    public GameObject playerInstance;
     public CameraShake cameraShake;
     private GameObject bloodInstance;
 
@@ -23,7 +25,10 @@ public class HpComponent : MonoBehaviour
 
     void Start()
     {
+        playerInstance = GameObject.FindGameObjectWithTag("Player");
+
         currentHP = maxHP;
+        isPlayerDead = false;
 
         if (isEnemy)
         {

@@ -18,10 +18,13 @@ public class EnemyAttack : MonoBehaviour
     private GameObject player;
     private bool canAttack;
 
+    HpComponent hpComponent;
+
 
     void Start()
     {
         animator = GetComponent<Animator>();
+        hpComponent = GetComponent<HpComponent>();
     }
 
     IEnumerator RandomAttack()
@@ -78,7 +81,7 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (IsPlayer(other))
+        if (IsPlayer(other) && hpComponent.isPlayerDead == false)
         {
             //salva player
             player = other.gameObject;

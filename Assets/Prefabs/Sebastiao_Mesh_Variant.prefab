@@ -620,6 +620,7 @@ GameObject:
   - component: {fileID: 9104710722218844030}
   - component: {fileID: 5312507853685128107}
   - component: {fileID: 3748311070099054528}
+  - component: {fileID: 9212480086689958881}
   m_Layer: 0
   m_Name: Sebastiao_Mesh_Variant
   m_TagString: PlayerModel
@@ -648,7 +649,7 @@ Transform:
   - {fileID: 5323317784777869369}
   - {fileID: 1261963665717592418}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9104710722218844030
 Animator:
@@ -699,6 +700,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9104710722218844030}
+  hpComponent: {fileID: 0}
+--- !u!114 &9212480086689958881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4517256597363581818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86c095b6adcac94296f1bea8054c001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4662920888669326935
 GameObject:
   m_ObjectHideFlags: 0

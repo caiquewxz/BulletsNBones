@@ -6,13 +6,14 @@ using UnityStandardAssets.Characters.ThirdPerson;
 [RequireComponent(typeof(HpComponent))]
 public class DeathComponent : MonoBehaviour
 {
+    GameOver gameOver;
     HpComponent hpComponent;
     [SerializeField] Animator playerAnimator;
     [SerializeField] List<MonoBehaviour> objectsToDisableWhenDie;
     void Start()
     {
         hpComponent = GetComponent<HpComponent>();
-        
+        gameOver = GetComponent<GameOver>();
 
         hpComponent?.onDie.AddListener(OnDie);
     }
@@ -21,6 +22,11 @@ public class DeathComponent : MonoBehaviour
     {
         Debug.Log("Morri " + playerAnimator?.name);
         playerAnimator?.SetBool("IsDead?", true);
+        hpComponent.isPlayerDead = true;
+        if(hpComponent.isPlayerDead)
+        {
+            Debug.Log("dead");
+        }
         
         foreach(var obj in objectsToDisableWhenDie)
         {

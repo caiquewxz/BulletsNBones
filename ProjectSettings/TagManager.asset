@@ -12,6 +12,7 @@ TagManager:
   - FireModeText
   - HandPlayer
   - PlayerDamageBlood
+  - GameoverScreen
   layers:
   - Default
   - TransparentFX

@@ -26,6 +26,7 @@ public class EnemyNavigation : MonoBehaviour
     {
         speed = (((transform.position - lastFramePosition).magnitude) / Time.deltaTime) / agent.speed;
     }
+
     void Update()
     {
         agent.SetDestination(enemyAttack.isAttacking ? transform.position : target.position);
