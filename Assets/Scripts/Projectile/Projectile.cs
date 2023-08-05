@@ -16,12 +16,12 @@ public class Projectile : MonoBehaviour
         AudioSource.PlayClipAtPoint(bulletSound, transform.position);
     }
 
-    private void OnTriggerEnter(Collider bullet)
+    private void OnTriggerEnter(Collider enemy)
     {
-        if (bullet.gameObject.CompareTag("Enemy"))
+        if (enemy.gameObject.CompareTag("Enemy")) 
         {
-            bullet.gameObject.GetComponent<HpComponent>().TakeDamage(bulletDamage);
-            Debug.Log("atual Enemy HP: " + bullet.gameObject.GetComponent<HpComponent>().currentHP);
+            enemy?.gameObject.GetComponent<HpComponent>()?.TakeDamage(bulletDamage);
+            Debug.Log("atual Enemy HP: " + enemy.gameObject.GetComponent<HpComponent>().currentHP);
             Destroy(this.gameObject);
         }
     }

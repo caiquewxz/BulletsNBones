@@ -11,6 +11,7 @@ TagManager:
   - AmmoText
   - FireModeText
   - HandPlayer
+  - PlayerDamageBlood
   layers:
   - Default
   - TransparentFX

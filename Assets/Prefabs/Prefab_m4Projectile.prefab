@@ -140,10 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4937026a3c414a54591a1db39aac72d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDamage: 10
+  bulletDamage: 40
   timeToDestroyProjectile: 3
-  launchForce: 50
-  bulletSound: {fileID: 8300000, guid: 37facaf937569654bb5ec6c71c71ecd7, type: 3}
+  launchForce: 75
+  bulletSound: {fileID: 8300000, guid: 71383b0512018774a85e65a15dd84504, type: 3}
 --- !u!1001 &5372334928030536632
 PrefabInstance:
   m_ObjectHideFlags: 0

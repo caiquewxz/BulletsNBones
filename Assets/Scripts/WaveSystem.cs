@@ -51,13 +51,14 @@ public class WaveSystem : MonoBehaviour
 
     void Update()
     {
-        
+      
     }
 
     public void StartWave()
     {
         wave++;
         enemiesToSpawn = EnemiesThisWave();
+        Debug.Log(EnemiesThisWave());
     }
 
     public int EnemiesThisWave()
@@ -68,7 +69,7 @@ public class WaveSystem : MonoBehaviour
         }
         else
         {
-            return waveEnemies * wave;
+            return waveEnemies + (waveEnemies / wave);
         }
     }
 }
