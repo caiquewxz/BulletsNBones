@@ -11,11 +11,12 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField]
     HpComponent hpComponent;
-    WaveSystem waveSystem;
+    GameObject waveSystem;
     
     void Start()
     {
-        waveSystem = GetComponent<WaveSystem>();
+        waveSystem = GameObject.FindGameObjectWithTag("WaveSystem");
+
         hpComponent = GetComponent<HpComponent>();
         
         if (hpComponent == null)
@@ -42,11 +43,12 @@ public class EnemyController : MonoBehaviour
 
     public void EnemyDie()
     {
-        if(waveSystem.kills >= waveSystem.EnemiesThisWave())
+        waveSystem.GetComponent<WaveSystem>();
+        if(waveSystem.GetComponent<WaveSystem>().kills >= waveSystem.GetComponent<WaveSystem>().EnemiesThisWave())
         {
             Destroy(gameObject);
-            waveSystem.kills++;
-            waveSystem.StartWave();
+            waveSystem.GetComponent<WaveSystem>().kills++;
+            waveSystem.GetComponent<WaveSystem>().StartWave();
         }
         else
         {

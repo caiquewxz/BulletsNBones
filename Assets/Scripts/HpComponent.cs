@@ -23,6 +23,14 @@ public class HpComponent : MonoBehaviour
     public UnityEvent onDie;
     public UnityEvent onTakeDamage;
 
+    private void Update()
+    {
+        if (debugHP != null)
+        {
+            debugHP.text = "HP: " + currentHP.ToString();
+        }
+    }
+
     void Start()
     {
         playerInstance = GameObject.FindGameObjectWithTag("Player");
@@ -42,10 +50,7 @@ public class HpComponent : MonoBehaviour
     {
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        if(debugHP != null)
-        {
-            debugHP.text = "HP: " + currentHP.ToString();
-        }
+        
 
         if(cameraShake != null && currentHP > 0)
         {
