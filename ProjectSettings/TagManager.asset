@@ -13,6 +13,8 @@ TagManager:
   - HandPlayer
   - PlayerDamageBlood
   - GameoverScreen
+  - Heal
+  - WaveSystem
   layers:
   - Default
   - TransparentFX

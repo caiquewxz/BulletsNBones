@@ -43,16 +43,6 @@ public class EnemyController : MonoBehaviour
 
     public void EnemyDie()
     {
-        waveSystem.GetComponent<WaveSystem>();
-        if(waveSystem.GetComponent<WaveSystem>().kills >= waveSystem.GetComponent<WaveSystem>().EnemiesThisWave())
-        {
-            Destroy(gameObject);
-            waveSystem.GetComponent<WaveSystem>().kills++;
-            waveSystem.GetComponent<WaveSystem>().StartWave();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 }

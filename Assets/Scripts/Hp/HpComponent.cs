@@ -40,7 +40,9 @@ public class HpComponent : MonoBehaviour
 
         if (isEnemy)
         {
-            onDie.AddListener(EnemyController.GetInstance().EnemyDie);
+            onDie.AddListener(WaveSystem.GetInstance().OnEnemyDie);
+            //onDie.AddListener(EnemyController.GetInstance().EnemyDie);
+            
         }
 
         bloodInstance = GameObject.FindGameObjectWithTag("PlayerDamageBlood");

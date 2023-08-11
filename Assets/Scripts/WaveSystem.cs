@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class WaveSystem : MonoBehaviour
 {
+    [SerializeField] GameObject curePrefab;
+ 
     public int wave;
     public int kills;
-    public int waveEnemies;
+    public int waveEnemies = 5;
     public int enemiesToSpawn;
     private static WaveSystem _instance;
 
@@ -33,11 +37,27 @@ public class WaveSystem : MonoBehaviour
         kills++;
         if (kills >= EnemiesThisWave())
         {
+            InstantiateCureInRandomPosition();
             StartWave();
         }
         Debug.Log("enemy died!");
     }
 
+    public void InstantiateCureInRandomPosition()
+    {
+        NavMeshHit hit;
+        Vector3 randomPosition;
+
+        if (NavMesh.SamplePosition(transform.position, out hit, 10.0f, NavMesh.AllAreas))
+        {
+            randomPosition = hit.position;
+            Instantiate(curePrefab, randomPosition, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogError("Nao foi possivel achar uma posição valida no navmesh");
+        }
+    }
 
     void Start()
     {
@@ -59,17 +79,11 @@ public class WaveSystem : MonoBehaviour
         wave++;
         enemiesToSpawn = EnemiesThisWave();
         Debug.Log(EnemiesThisWave());
+
     }
 
     public int EnemiesThisWave()
     {
-        if(waveEnemies == 0)
-        {
-            return waveEnemies = 5;
-        }
-        else
-        {
-            return waveEnemies + (waveEnemies / wave);
-        }
+        return waveEnemies * wave;
     }
 }

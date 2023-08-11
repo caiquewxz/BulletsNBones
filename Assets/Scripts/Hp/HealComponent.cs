@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class HealComponent : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class HealComponent : MonoBehaviour
     {
         player.GetComponent<HpComponent>().currentHP = player.GetComponent<HpComponent>().currentHP + hpToHeal;
     }
+
+    
 
     private void OnTriggerEnter(Collider other)
     {

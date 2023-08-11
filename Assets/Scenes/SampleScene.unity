@@ -1674,15 +1674,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.41
+      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 408730, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1783,7 +1783,7 @@ GameObject:
   - component: {fileID: 1828524362}
   m_Layer: 0
   m_Name: WaveSystem
-  m_TagString: Untagged
+  m_TagString: WaveSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1800,9 +1800,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f858e2df00b9a6a48a39f72bbf5687cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curePrefab: {fileID: 5045545968627009374, guid: 1b07f82061a35264fa3255bde451bed8, type: 3}
   wave: 0
   kills: 0
-  waveEnemies: 0
+  waveEnemies: 5
   enemiesToSpawn: 0
   onWaveCleared:
     m_PersistentCalls:
