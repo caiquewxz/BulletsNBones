@@ -8,12 +8,13 @@ public class Projectile : MonoBehaviour
     public float timeToDestroyProjectile;
     public float launchForce;
     public AudioClip bulletSound;
+    [SerializeField] float volume;
 
     private void Start()
     {
         gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * launchForce, ForceMode.Impulse);
         Destroy(gameObject, timeToDestroyProjectile);
-        AudioSource.PlayClipAtPoint(bulletSound, transform.position);
+        AudioSource.PlayClipAtPoint(bulletSound, transform.position, volume);
     }
 
     private void OnTriggerEnter(Collider enemy)

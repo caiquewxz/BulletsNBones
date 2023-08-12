@@ -144,6 +144,7 @@ MonoBehaviour:
   timeToDestroyProjectile: 3
   launchForce: 55
   bulletSound: {fileID: 8300000, guid: 37facaf937569654bb5ec6c71c71ecd7, type: 3}
+  volume: 0.1
 --- !u!1 &6205646164512066254
 GameObject:
   m_ObjectHideFlags: 0
