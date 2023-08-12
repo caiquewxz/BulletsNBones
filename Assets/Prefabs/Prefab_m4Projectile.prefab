@@ -145,6 +145,7 @@ MonoBehaviour:
   launchForce: 75
   bulletSound: {fileID: 8300000, guid: 71383b0512018774a85e65a15dd84504, type: 3}
   volume: 0.3
+  hitPartice: {fileID: 8969999129556051396, guid: 63629fbdce027394c9cae771d9409b10, type: 3}
 --- !u!1 &6464168081839816369
 GameObject:
   m_ObjectHideFlags: 0
