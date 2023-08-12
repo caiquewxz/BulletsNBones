@@ -48,7 +48,7 @@ public class WaveSystem : MonoBehaviour
         NavMeshHit hit;
         Vector3 randomPosition;
 
-        if (NavMesh.SamplePosition(transform.position, out hit, 10.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(transform.position + Random.insideUnitSphere * 10f, out hit, 9999.0f, NavMesh.AllAreas))
         {
             randomPosition = hit.position;
             Instantiate(curePrefab, randomPosition, Quaternion.identity);
