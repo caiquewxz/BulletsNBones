@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
     public Vector3 attachLocationOffset;
     public Vector3 attachRotationOffset;
     public string playerHandTag = "HandPlayer";
+    public Transform spawnReference;
 
 
     public Text fireModeText
@@ -63,6 +64,11 @@ public class Weapon : MonoBehaviour
         canAutoShoot = true;
         automaticFireTimer = rateOfFire;
         character = GameObject.FindGameObjectWithTag("PlayerModel");
+
+        if(spawnReference == null)
+        {
+            Debug.LogError("Please set a spawn reference object in the weapon script.");
+        }
 
     }
 
@@ -194,7 +200,7 @@ public class Weapon : MonoBehaviour
 
     private void CreateBullet()
     {
-        Instantiate(projectileTemplate, transform.position, character.transform.rotation);
+        Instantiate(projectileTemplate, spawnReference.position, character.transform.rotation);
     }
 
     private void AttachToPlayer()
