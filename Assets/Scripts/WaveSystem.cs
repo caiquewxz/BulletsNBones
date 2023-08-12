@@ -76,6 +76,7 @@ public class WaveSystem : MonoBehaviour
 
     public void StartWave()
     {
+        kills = 0;
         wave++;
         enemiesToSpawn = EnemiesThisWave();
         Debug.Log(EnemiesThisWave());
